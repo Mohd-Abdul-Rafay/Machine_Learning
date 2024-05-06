@@ -1,0 +1,35 @@
+Implementation of Gaussian Naive Bayes for Digit Recognition
+
+(Note, you are not to use modules which provide these functions - that would be too easy (no sklearn.naive_bayes, for example) but rather create them yourselves.
+
+The dataset to use is the digit recognition dataset available from the sklearn module.
+
+Gaussian Naive Bayes:
+
+x represent the image vector (x1, x2, x3, … x64)
+
+ck represents class k = that is, one of the 10 digits for recognition
+
+Recall, we’re looking for the highest p(ck|x) by using this fact:
+
+            p(ck|x) = p(x|ck) p(ck) / p(x)
+
+Let’s step through the parts:
+
+• p(ck) is simply the proportion of that class in the training data. E.g. if there are 20 fives out of 200 digits in the training sample p(five) = 20/200 = 0.1
+• p(x|ck) is more complicated
+  • The main assumption of naive Bayes is that the features should be treated independently (which is why it’s “naive”). This means
+    • p(x|ck) = p(x1|ck) * p(x2|ck) * … * p(x64|ck)
+• For each class, k, in the training data:
+    • Calculate the mean and variance of each pixel location for that class
+    • Use that and the formula for a gaussian probability to calculate p(xi|ck)
+    • g(x) = (1 / std(sqrt(2*pi))) * e ^ (-1/2 * ((x - xi) / std) ^ 2)
+• p(x) is the normalization term. You don’t need to calculate this, since you just want to pick the largest p(ck|x), and p(x) is the same denominator in calculating p(ck|x) for every class.
+• However, if you want p(ck|x) to provide a true estimate of the probability, you can use the following formula to calculate p(x):
+  • p(x) = Σk p(x,ck)   = Σk p(x|ck) p(ck)
+
+
+The predicted class is the largest p(ck|x) for each image
+Report the overall accuracy of your prediction.
+Show the classification matrix.
+Note which errors are more common. In what way does that match your intuitions?
