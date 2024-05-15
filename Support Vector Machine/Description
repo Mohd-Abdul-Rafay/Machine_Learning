@@ -1,0 +1,11 @@
+mplementation of linear SVM for binary classification.
+
+(Note, you are not to use modules which provide these functions - that would be too easy (no sklearn.svm, for example) but rather create them yourselves.
+
+Dataset should be generated via ‘make_blobs’ in sklearn and the number of samples is 100. 
+Please note the generated dataset should be separable. 
+Please refer to (sklearn.datasets.make_blobs — scikit-learn 1.4.1 documentationLinks to an external site.) for more details.
+
+Please plot the maximum margin separating hyperplane within the dataset using SVM with linear kernel. 
+Remove the closest support vector, redo the task and plot the new maximum margin separating hyperplane. 
+What’s the takeaway by comparing the plots? 
